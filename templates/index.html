@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="{{ url_for('static', filename='img/4.jpg') }}" type="image/png" />
+  <title>Daniel & Laura</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap');
+
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #23003c, #4a005e);
+      color: #f8e8f8;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4.5rem;
+      color: #ff6fa3;
+      text-shadow:
+        0 0 5px #ff6fa3,
+        0 0 10px #ff6fa3,
+        0 0 20px #ff4081,
+        0 0 30px #d81b60,
+        0 0 40px #d81b60;
+      margin-bottom: 20px;
+      user-select: none;
+      animation: pulseGlow 3s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        text-shadow:
+          0 0 5px #ff6fa3,
+          0 0 10px #ff6fa3,
+          0 0 20px #ff4081,
+          0 0 30px #d81b60,
+          0 0 40px #d81b60;
+      }
+      50% {
+        text-shadow:
+          0 0 15px #ff9bb4,
+          0 0 25px #ff9bb4,
+          0 0 35px #ff80aa,
+          0 0 50px #d81b60,
+          0 0 60px #d81b60;
+      }
+    }
+
+    #timer {
+      font-weight: 600;
+      font-size: 2.6rem;
+      color: #ffa6c9;
+      text-shadow: 0 0 10px #ff77aa;
+      margin: 25px 0 40px;
+      letter-spacing: 0.07em;
+      user-select: none;
+      font-family: 'Poppins', sans-serif;
+      background: rgba(255, 255, 255, 0.07);
+      padding: 15px 30px;
+      border-radius: 50px;
+      box-shadow:
+        0 0 15px #ff6699,
+        inset 0 0 15px #ff6699;
+      transition: transform 0.3s ease;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #timer:hover {
+      transform: scale(1.1);
+    }
+
+    /* Carrossel */
+
+    .carousel-container {
+      position: relative;
+      width: 320px;
+      margin: 0 auto 45px;
+      overflow: hidden;
+      border-radius: 50%;
+      box-shadow:
+        0 0 40px 8px #ff4d94,
+        0 0 50px 20px #d81b60 inset;
+      user-select: none;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease;
+      cursor: grab;
+    }
+
+    .carousel img {
+      width: 320px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 105, 170, 0.7);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      padding: 6px 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.3s ease;
+      z-index: 10;
+      user-select: none;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(255, 105, 170, 1);
+    }
+
+    .carousel-btn.prev {
+      left: 8px;
+    }
+
+    .carousel-btn.next {
+      right: 8px;
+    }
+
+    #frase {
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.3rem;
+      max-width: 700px;
+      color: #ffd6e8;
+      line-height: 1.6;
+      text-shadow:
+        0 0 6px #ff6699;
+      margin-bottom: 60px;
+      user-select: text;
+      padding: 0 10px;
+    }
+
+    audio {
+      outline: none;
+      border-radius: 15px;
+      width: 320px;
+      box-shadow:
+        0 0 25px #d81b60;
+      user-select: none;
+      transition: box-shadow 0.3s ease;
+    }
+
+    audio:hover {
+      box-shadow:
+        0 0 40px #ff80ab;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 3rem;
+      }
+      #timer {
+        font-size: 1.8rem;
+        padding: 12px 25px;
+      }
+      .carousel-container {
+        width: 240px;
+        margin-bottom: 30px;
+      }
+      .carousel img {
+        width: 240px;
+        height: 240px;
+      }
+      #frase {
+        font-size: 1rem;
+        max-width: 90vw;
+        margin-bottom: 40px;
+      }
+      audio {
+        width: 90vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Daniel & Laura</h1>
+
+  <div id="timer">Carregando tempo...</div>
+
+  <div class="carousel-container">
+    <button class="carousel-btn prev">&#10094;</button>
+    <div class="carousel">
+      <img src="/static/img/1.jpg" alt="Foto 1" />
+      <img src="/static/img/2.jpg" alt="Foto 2" />
+      <img src="/static/img/3.jpg" alt="Foto 3" />
+      <img src="/static/img/4.jpg" alt="Foto 4" />
+    </div>
+    <button class="carousel-btn next">&#10095;</button>
+  </div>
+
+  <div id="frase">
+    Amor, às vezes eu paro e fico pensando como é louco o jeito que a vida colocou você no meu caminho. E, de verdade, não existe no mundo outra pessoa que me faça sentir o que você me faz.<br><br>
+    Teu sorriso é meu ponto de paz, teu abraço é meu lugar seguro e tua voz é o som que acalma tudo dentro de mim.<br><br>
+    A gente já viveu tanta coisa junto… e o melhor de tudo é saber que isso ainda é só o começo. Eu quero teus dias bons, teus dias difíceis, teus sonhos, tuas manias bobas e todos os planos malucos que a gente ainda nem inventou.<br><br>
+    Obrigado por ser minha parceira, minha amiga, meu amor e o motivo de eu sorrir do nada no meio do dia. Eu te amo mais do que qualquer palavra conseguiria explicar, mas mesmo assim, vou passar a vida tentando te mostrar isso. ❤️
+  </div>
+
+  <audio id="audio" autoplay loop>
+    <source src="/static/music/stuckonyou.mp3" type="audio/mpeg" />
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <script>
+    // Cronômetro
+    const inicioRelacionamento = new Date(2017, 10, 10, 12, 0, 0);
+
+    function atualizarCronometro() {
+      const agora = new Date();
+      let diff = agora - inicioRelacionamento;
+
+      const segundos = Math.floor(diff / 1000) % 60;
+      const minutos = Math.floor(diff / (1000 * 60)) % 60;
+      const horas = Math.floor(diff / (1000 * 60 * 60)) % 24;
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24)) % 30;
+      const meses = Math.floor(diff / (1000 * 60 * 60 * 24 * 30)) % 12;
+      const anos = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+
+      document.getElementById('timer').textContent =
+        `${anos} anos, ${meses} meses, ${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
+    }
+
+    setInterval(atualizarCronometro, 1000);
+    atualizarCronometro();
+
+    // Carrossel
+    const carousel = document.querySelector('.carousel');
+    const images = document.querySelectorAll('.carousel img');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+
+    let index = 0;
+
+    function updateCarousel() {
+      carousel.style.transform = `translateX(${-index * 320}px)`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      index = (index === 0) ? images.length - 1 : index - 1;
+      updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      index = (index === images.length - 1) ? 0 : index + 1;
+      updateCarousel();
+    });
+
+    // Ajustar para telas pequenas (carrossel menor)
+    function ajustarCarousel() {
+      const container = document.querySelector('.carousel-container');
+      const imgs = document.querySelectorAll('.carousel img');
+      let largura = 320;
+
+      if(window.innerWidth <= 480) {
+        largura = 240;
+      }
+
+      imgs.forEach(img => {
+        img.style.width = largura + 'px';
+        img.style.height = largura + 'px';
+      });
+
+      updateCarousel();
+    }
+
+    window.addEventListener('resize', ajustarCarousel);
+    ajustarCarousel();
+</script>
+
+<script>
+const musica = document.getElementById("audio");
+
+// Tenta tocar logo que a página carrega
+musica.play().catch(() => {
+// Se não conseguir, toca após o primeiro clique/touch
+document.addEventListener("click", () => {
+    musica.play();
+}, { once: true });
+});
+</script>
+</body>
+</html>
