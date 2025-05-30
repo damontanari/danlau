@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="{{ url_for('static', filename='img/4.jpg') }}" type="image/png" />
   <title>Daniel & Laura</title>
+
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@300;600&display=swap');
 
     /* Reset */
     * {
@@ -16,30 +20,29 @@
     }
 
     body {
-      background: linear-gradient(135deg, #23003c, #4a005e);
-      color: #f8e8f8;
-      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #2e1052, #6a0dad);
+      color: #f0e7ff;
+      font-family: 'Raleway', sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 30px 20px;
+      padding: 40px 25px;
       text-align: center;
       overflow-x: hidden;
     }
 
     h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 4.5rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 5rem;
       color: #ff6fa3;
       text-shadow:
-        0 0 5px #ff6fa3,
-        0 0 10px #ff6fa3,
-        0 0 20px #ff4081,
-        0 0 30px #d81b60,
-        0 0 40px #d81b60;
-      margin-bottom: 20px;
+        0 0 8px #ff6fa3,
+        0 0 15px #ff4081,
+        0 0 25px #d81b60;
+      margin-bottom: 25px;
       user-select: none;
       animation: pulseGlow 3s infinite ease-in-out;
     }
@@ -47,37 +50,30 @@
     @keyframes pulseGlow {
       0%, 100% {
         text-shadow:
-          0 0 5px #ff6fa3,
-          0 0 10px #ff6fa3,
-          0 0 20px #ff4081,
-          0 0 30px #d81b60,
-          0 0 40px #d81b60;
+          0 0 8px #ff6fa3,
+          0 0 15px #ff4081,
+          0 0 25px #d81b60;
       }
       50% {
         text-shadow:
-          0 0 15px #ff9bb4,
-          0 0 25px #ff9bb4,
-          0 0 35px #ff80aa,
-          0 0 50px #d81b60,
-          0 0 60px #d81b60;
+          0 0 20px #ff9bb4,
+          0 0 30px #ff80aa,
+          0 0 40px #d81b60;
       }
     }
 
     #timer {
       font-weight: 600;
-      font-size: 2.6rem;
-      color: #ffa6c9;
-      text-shadow: 0 0 10px #ff77aa;
-      margin: 25px 0 40px;
-      letter-spacing: 0.07em;
+      font-size: 2.8rem;
+      color: #fff0f5;
+      background: rgba(255, 105, 180, 0.25);
+      border-radius: 40px;
+      padding: 18px 38px;
+      margin: 30px 0 50px;
+      letter-spacing: 0.08em;
       user-select: none;
-      font-family: 'Poppins', sans-serif;
-      background: rgba(255, 255, 255, 0.07);
-      padding: 15px 30px;
-      border-radius: 50px;
       box-shadow:
-        0 0 15px #ff6699,
-        inset 0 0 15px #ff6699;
+        0 4px 12px rgba(255, 105, 180, 0.5);
       transition: transform 0.3s ease;
       width: fit-content;
       margin-left: auto;
@@ -86,114 +82,83 @@
 
     #timer:hover {
       transform: scale(1.1);
+      box-shadow:
+        0 6px 18px rgba(255, 105, 180, 0.8);
     }
 
-    /* Carrossel */
-
-    .carousel-container {
-      position: relative;
+    /* Carousel customizations */
+    .carousel {
       width: 320px;
-      margin: 0 auto 45px;
-      overflow: hidden;
+      max-width: 90vw;
+      margin: 0 auto 50px;
       border-radius: 50%;
       box-shadow:
-        0 0 40px 8px #ff4d94,
-        0 0 50px 20px #d81b60 inset;
-      user-select: none;
+        0 0 50px 12px #ff4d94,
+        0 0 60px 28px #d81b60 inset;
+      overflow: hidden;
     }
 
-    .carousel {
-      display: flex;
-      transition: transform 0.5s ease;
-      cursor: grab;
-    }
-
-    .carousel img {
+    .carousel-inner img {
+      border-radius: 50%;
+      object-fit: cover;
       width: 320px;
       height: 320px;
-      object-fit: cover;
-      border-radius: 50%;
-      flex-shrink: 0;
+      max-width: 90vw;
+      max-height: 90vw;
+      filter: drop-shadow(0 4px 4px rgba(0,0,0,0.25));
+      transition: transform 0.4s ease;
     }
 
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 105, 170, 0.7);
-      border: none;
-      color: white;
-      font-size: 2rem;
-      padding: 6px 12px;
-      border-radius: 50%;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.3s ease;
-      z-index: 10;
-      user-select: none;
-    }
-
-    .carousel-btn:hover {
-      background: rgba(255, 105, 170, 1);
-    }
-
-    .carousel-btn.prev {
-      left: 8px;
-    }
-
-    .carousel-btn.next {
-      right: 8px;
+    .carousel-inner img:hover {
+      transform: scale(1.05);
     }
 
     #frase {
       font-style: italic;
       font-weight: 300;
-      font-size: 1.3rem;
-      max-width: 700px;
+      font-size: 1.35rem;
+      max-width: 750px;
       color: #ffd6e8;
-      line-height: 1.6;
+      line-height: 1.75;
       text-shadow:
-        0 0 6px #ff6699;
-      margin-bottom: 60px;
+        0 0 8px #ff6699;
+      margin-bottom: 70px;
       user-select: text;
-      padding: 0 10px;
+      padding: 0 15px;
+      font-family: 'Raleway', sans-serif;
     }
 
     audio {
       outline: none;
-      border-radius: 15px;
+      border-radius: 20px;
       width: 320px;
       box-shadow:
-        0 0 25px #d81b60;
+        0 0 30px #d81b60;
       user-select: none;
       transition: box-shadow 0.3s ease;
     }
 
     audio:hover {
       box-shadow:
-        0 0 40px #ff80ab;
+        0 0 45px #ff80ab;
     }
 
     @media (max-width: 480px) {
       h1 {
-        font-size: 3rem;
+        font-size: 3.8rem;
       }
       #timer {
-        font-size: 1.8rem;
-        padding: 12px 25px;
+        font-size: 2.1rem;
+        padding: 15px 30px;
       }
-      .carousel-container {
-        width: 240px;
-        margin-bottom: 30px;
-      }
-      .carousel img {
+      .carousel-inner img {
         width: 240px;
         height: 240px;
       }
       #frase {
-        font-size: 1rem;
+        font-size: 1.1rem;
         max-width: 90vw;
-        margin-bottom: 40px;
+        margin-bottom: 45px;
       }
       audio {
         width: 90vw;
@@ -206,15 +171,103 @@
 
   <div id="timer">Carregando tempo...</div>
 
-  <div class="carousel-container">
-    <button class="carousel-btn prev">&#10094;</button>
-    <div class="carousel">
-      <img src="/static/img/1.jpg" alt="Foto 1" />
-      <img src="/static/img/2.jpg" alt="Foto 2" />
-      <img src="/static/img/3.jpg" alt="Foto 3" />
-      <img src="/static/img/4.jpg" alt="Foto 4" />
+  <!-- Bootstrap Carousel -->
+  <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000" data-bs-touch="true">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/static/img/1.jpg" class="d-block mx-auto" alt="Foto 1" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/2.jpg" class="d-block mx-auto" alt="Foto 2" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/3.jpg" class="d-block mx-auto" alt="Foto 3" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/4.jpg" class="d-block mx-auto" alt="Foto 4" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/5.jpg" class="d-block mx-auto" alt="Foto 5" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/6.jpg" class="d-block mx-auto" alt="Foto 6" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/7.jpg" class="d-block mx-auto" alt="Foto 7" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/8.jpg" class="d-block mx-auto" alt="Foto 8" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/9.jpg" class="d-block mx-auto" alt="Foto 9" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/10.jpg" class="d-block mx-auto" alt="Foto 10" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/11.jpg" class="d-block mx-auto" alt="Foto 11" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/12.jpg" class="d-block mx-auto" alt="Foto 12" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/13.jpg" class="d-block mx-auto" alt="Foto 13" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/14.jpg" class="d-block mx-auto" alt="Foto 14" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/15.jpg" class="d-block mx-auto" alt="Foto 15" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/16.jpg" class="d-block mx-auto" alt="Foto 16" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/17.jpg" class="d-block mx-auto" alt="Foto 17" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/18.jpg" class="d-block mx-auto" alt="Foto 18" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/19.jpg" class="d-block mx-auto" alt="Foto 19" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/20.jpg" class="d-block mx-auto" alt="Foto 20" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/21.jpg" class="d-block mx-auto" alt="Foto 21" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/22.jpg" class="d-block mx-auto" alt="Foto 22" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/23.jpg" class="d-block mx-auto" alt="Foto 23" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/24.jpg" class="d-block mx-auto" alt="Foto 24" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/25.jpg" class="d-block mx-auto" alt="Foto 25" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/26.jpg" class="d-block mx-auto" alt="Foto 26" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/27.jpg" class="d-block mx-auto" alt="Foto 27" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/28.jpg" class="d-block mx-auto" alt="Foto 28" />
+      </div>
+      <div class="carousel-item">
+        <img src="/static/img/29.jpg" class="d-block mx-auto" alt="Foto 29" />
+      </div>
     </div>
-    <button class="carousel-btn next">&#10095;</button>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" aria-label="Anterior">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next" aria-label="Próximo">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
   </div>
 
   <div id="frase">
@@ -228,6 +281,9 @@
     <source src="/static/music/stuckonyou.mp3" type="audio/mpeg" />
     Seu navegador não suporta áudio.
   </audio>
+
+  <!-- Bootstrap Bundle with Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
     // Cronômetro
@@ -251,60 +307,13 @@
     setInterval(atualizarCronometro, 1000);
     atualizarCronometro();
 
-    // Carrossel
-    const carousel = document.querySelector('.carousel');
-    const images = document.querySelectorAll('.carousel img');
-    const prevBtn = document.querySelector('.carousel-btn.prev');
-    const nextBtn = document.querySelector('.carousel-btn.next');
-
-    let index = 0;
-
-    function updateCarousel() {
-      carousel.style.transform = `translateX(${-index * 320}px)`;
-    }
-
-    prevBtn.addEventListener('click', () => {
-      index = (index === 0) ? images.length - 1 : index - 1;
-      updateCarousel();
+    // Forçar áudio tocar após interação se precisar
+    const musica = document.getElementById("audio");
+    musica.play().catch(() => {
+      document.addEventListener("click", () => {
+        musica.play();
+      }, { once: true });
     });
-
-    nextBtn.addEventListener('click', () => {
-      index = (index === images.length - 1) ? 0 : index + 1;
-      updateCarousel();
-    });
-
-    // Ajustar para telas pequenas (carrossel menor)
-    function ajustarCarousel() {
-      const container = document.querySelector('.carousel-container');
-      const imgs = document.querySelectorAll('.carousel img');
-      let largura = 320;
-
-      if(window.innerWidth <= 480) {
-        largura = 240;
-      }
-
-      imgs.forEach(img => {
-        img.style.width = largura + 'px';
-        img.style.height = largura + 'px';
-      });
-
-      updateCarousel();
-    }
-
-    window.addEventListener('resize', ajustarCarousel);
-    ajustarCarousel();
-</script>
-
-<script>
-const musica = document.getElementById("audio");
-
-// Tenta tocar logo que a página carrega
-musica.play().catch(() => {
-// Se não conseguir, toca após o primeiro clique/touch
-document.addEventListener("click", () => {
-    musica.play();
-}, { once: true });
-});
-</script>
+  </script>
 </body>
 </html>
