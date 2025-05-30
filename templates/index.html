@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="{{ url_for('static', filename='img/26.jpg') }}" type="image/png" />
+  <link rel="icon" href="{{ url_for('static', filename='img/logo.ico') }}" type="image/ico" />
   <title>Daniel & Laura</title>
 
   <!-- Bootstrap CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Great+Vibes&family=Playfair+Display:wght@700&family=Quicksand:wght@300&display=swap" rel="stylesheet">
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@300;600&display=swap');
@@ -22,7 +23,7 @@
     body {
       background: linear-gradient(135deg, #2e1052, #6a0dad);
       color: #f0e7ff;
-      font-family: 'Raleway', sans-serif;
+      font-family: 'Courgette', sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -34,13 +35,12 @@
     }
 
     h1 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 5rem;
-      color: #ff6fa3;
+      font-family: 'Great Vibes', cursive;
+      font-size: 5.5rem;
+      color: #ff9ecb;
       text-shadow:
-        0 0 8px #ff6fa3,
-        0 0 15px #ff4081,
+        0 0 8px #ffb6d5,
+        0 0 15px #ff69b4,
         0 0 25px #d81b60;
       margin-bottom: 25px;
       user-select: none;
@@ -63,17 +63,17 @@
     }
 
     #timer {
-      font-weight: 600;
+      font-weight: 500;
       font-size: 2.8rem;
       color: #fff0f5;
-      background: rgba(255, 105, 180, 0.25);
-      border-radius: 40px;
-      padding: 18px 38px;
+      background: rgba(255, 182, 193, 0.2);
+      border-radius: 50px;
+      padding: 20px 40px;
       margin: 30px 0 50px;
       letter-spacing: 0.08em;
       user-select: none;
       box-shadow:
-        0 4px 12px rgba(255, 105, 180, 0.5);
+        0 4px 12px rgba(255, 182, 193, 0.5);
       transition: transform 0.3s ease;
       width: fit-content;
       margin-left: auto;
@@ -81,11 +81,10 @@
     }
 
     #timer:hover {
-      transform: scale(1.1);
+      transform: scale(1.08);
       box-shadow:
-        0 6px 18px rgba(255, 105, 180, 0.8);
+        0 6px 18px rgba(255, 182, 193, 0.8);
     }
-
     /* Carousel customizations */
     .carousel {
     width: 320px;
@@ -114,18 +113,17 @@
     }
 
     #frase {
+      font-family: 'Quicksand', sans-serif;
       font-style: italic;
       font-weight: 300;
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       max-width: 750px;
       color: #ffd6e8;
-      line-height: 1.75;
+      line-height: 1.85;
       text-shadow:
-        0 0 8px #ff6699;
+        0 0 8px #ff99cc;
       margin-bottom: 70px;
-      user-select: text;
       padding: 0 15px;
-      font-family: 'Raleway', sans-serif;
     }
 
     audio {
@@ -287,7 +285,7 @@
 
   <script>
     // Cronômetro
-    const inicioRelacionamento = new Date(2017, 10, 10, 12, 0, 0);
+    const inicioRelacionamento = new Date(2017, 10, 10, 20, 0, 0);
 
     function atualizarCronometro() {
       const agora = new Date();
